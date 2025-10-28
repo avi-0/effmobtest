@@ -6,13 +6,10 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private static readonly int RunTrigger = Animator.StringToHash("run_trigger");
-    private static readonly int IdleTrigger = Animator.StringToHash("idle_trigger");
-    private static readonly int JumpTrigger = Animator.StringToHash("jump_trigger");
-    private static readonly int FallTrigger = Animator.StringToHash("fall_trigger");
     private static readonly int OnGround = Animator.StringToHash("on_ground");
     private static readonly int Walking = Animator.StringToHash("walking");
     private static readonly int Jumping = Animator.StringToHash("jumping");
+    private static readonly int FaceRight = Animator.StringToHash("face_right");
 
     [SerializeField] private float RunSpeed;
 
@@ -26,13 +23,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Animator _animator;
 
+    [SerializeField] private Animator _facingDirectionAnimator;
+
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private Transform _groundCheckPosition;
 
     [SerializeField] private LayerMask _groundCheckLayerMask;
-    
-    [SerializeField] private Transform _selfTransform;
 
     [SerializeField] private float _groundCheckRadius;
     
@@ -87,10 +84,10 @@ public class Player : MonoBehaviour
 
         if (moveValue.x > 0)
         {
-            _selfTransform.localScale = new Vector3(-1, 1, 1);
+            _facingDirectionAnimator.SetBool(FaceRight, true);
         } else if (moveValue.x < 0)
         {
-            _selfTransform.localScale = Vector3.one;
+            _facingDirectionAnimator.SetBool(FaceRight, false);
         }
     }
 
