@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Hurt(Vector3 from)
+    public void Hurt(Vector3 from)
     {
         var dir = (_selfTransform.position - from).normalized;
         _rigidbody.velocity += (Vector2) dir * HurtSpeed;
@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Kill()
+    public void Kill()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
