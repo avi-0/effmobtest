@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,20 +34,19 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float _groundCheckRadius;
     
+    [SerializeField] private TMP_Text _scoreText;
+    
     private InputAction moveAction;
     private InputAction jumpAction;
 
     private bool _isOnGround;
     private bool _isJumping;
+    private int _score = 0;
     
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
-    }
-
-    private void Update()
-    {
     }
 
     void FixedUpdate()
@@ -95,5 +95,11 @@ public class Player : MonoBehaviour
     {
         var coll = Physics2D.OverlapCircle(_groundCheckPosition.position, _groundCheckRadius, _groundCheckLayerMask);
         return coll is not null;
+    }
+
+    public void AddScore(int delta)
+    {
+        _score += delta;
+        _scoreText.text = $"score: {_score}";
     }
 }
