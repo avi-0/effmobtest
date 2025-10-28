@@ -6,9 +6,9 @@ public class Killbox : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Player>() is Player player)
+        if (other.GetComponent<Character>() is Character character)
         {
-            player.Kill();
+            character.Kill();
         }
     }
 }

@@ -13,13 +13,11 @@ public class FollowCamera : MonoBehaviour
     
     [SerializeField] private Transform _targetTransform;
     
-    void Start()
-    {
-        
-    }
-    
     void Update()
     {
+        if (_targetTransform == null)
+            return;
+        
         var screenHalfWidth = _camera.orthographicSize * Screen.width / Screen.height;
         var targetX = _targetTransform.position.x;
         var min = targetX - screenHalfWidth * _deadzoneWidthFraction;
