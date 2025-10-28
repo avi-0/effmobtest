@@ -47,6 +47,8 @@ public class Character : MonoBehaviour
     [NonSerialized] public Vector2 MoveInput;
 
     [NonSerialized] public bool JumpInput;
+
+    public event Action Died;
     
     void Start()
     {
@@ -64,8 +66,7 @@ public class Character : MonoBehaviour
         _isOnGround = IsOnGround();
         if (_isOnGround && JumpInput)
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JumpSpeed);
-            _isJumping = true;
+            Jump();
         }
 
         if (_isJumping && _rigidbody.velocity.y < FlipSpeed)
@@ -74,6 +75,12 @@ public class Character : MonoBehaviour
         }
         
         UpdateVisuals();
+    }
+
+    public void Jump()
+    {
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JumpSpeed);
+        _isJumping = true;
     }
 
     private void UpdateVisuals()
@@ -121,5 +128,6 @@ public class Character : MonoBehaviour
     public void Kill()
     {
         Destroy(gameObject);
+        Died?.Invoke();
     }
 }

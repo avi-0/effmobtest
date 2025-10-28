@@ -19,6 +19,8 @@ public class EnemyWalker : MonoBehaviour
     
     [SerializeField] private float _surroundingsCheckRadius;
 
+    [SerializeField] private Hitbox _hitbox;
+
     private bool _canWalkLeft;
     private bool _canWalkRight;
     private bool _isWalkingLeft = false;
@@ -27,6 +29,18 @@ public class EnemyWalker : MonoBehaviour
     private void Start()
     {
         _isWalkingRight = true;
+        
+        _hitbox.TriggerEntered += HitboxOnTriggerEntered;
+    }
+
+    private void HitboxOnTriggerEntered(Collider2D obj)
+    {
+        _character.Kill();
+
+        if (obj.GetComponent<Player>() is Player player)
+        {
+            player.StompedEnemy();
+        }
     }
 
     void FixedUpdate()

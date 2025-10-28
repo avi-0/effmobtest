@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,13 @@ public class Player : MonoBehaviour
     {
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
+        
+        _character.Died += OnDied;
+    }
+
+    private void OnDied()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void FixedUpdate()
@@ -42,5 +50,11 @@ public class Player : MonoBehaviour
     {
         _score += delta;
         UpdateHud();
+    }
+    
+    public void StompedEnemy()
+    {
+        AddScore(5);
+        _character.Jump();
     }
 }
