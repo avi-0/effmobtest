@@ -252,6 +252,9 @@ MonoBehaviour:
   RunAccel: 36
   JumpSpeed: 12
   FlipSpeed: 8
+  HurtSpeed: 8
+  _startingHealth: 3
+  _selfTransform: {fileID: 4059307610969347023}
   _rigidbody: {fileID: 7780502224438938831}
   _animator: {fileID: 2046764125899238822}
   _facingDirectionAnimator: {fileID: 1814809032011271043}
@@ -261,6 +264,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _groundCheckRadius: 0.1
+  _scoreText: {fileID: 0}
+  _spikeLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &6219145933832853320
 Animator:
   serializedVersion: 5

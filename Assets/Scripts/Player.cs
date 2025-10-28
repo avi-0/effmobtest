@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float FlipSpeed;
 
+    [SerializeField] private float HurtSpeed;
+
+    [SerializeField] private int _startingHealth;
+
+    [SerializeField] private Transform _selfTransform;
+    
     [SerializeField] private Rigidbody2D _rigidbody;
 
     [SerializeField] private Animator _animator;
@@ -36,17 +43,25 @@ public class Player : MonoBehaviour
     
     [SerializeField] private TMP_Text _scoreText;
     
+    [SerializeField] private TMP_Text _healthText;
+
+    [SerializeField] private LayerMask _spikeLayerMask;
+    
     private InputAction moveAction;
     private InputAction jumpAction;
 
     private bool _isOnGround;
     private bool _isJumping;
     private int _score = 0;
+    private int _health;
     
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
+
+        _health = _startingHealth;
+        UpdateHud();
     }
 
     void FixedUpdate()
@@ -91,6 +106,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void UpdateHud()
+    {
+        _scoreText.text = $"score: {_score}";
+        _healthText.text = $"health: {_health}";
+    }
+
     private bool IsOnGround()
     {
         var coll = Physics2D.OverlapCircle(_groundCheckPosition.position, _groundCheckRadius, _groundCheckLayerMask);
@@ -100,6 +121,34 @@ public class Player : MonoBehaviour
     public void AddScore(int delta)
     {
         _score += delta;
-        _scoreText.text = $"score: {_score}";
+        UpdateHud();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        print("hey");
+        if ((_spikeLayerMask & (1 << other.collider.gameObject.layer)) != 0)
+        {
+            Hurt(other.GetContact(0).point);
+        }
+    }
+
+    private void Hurt(Vector3 from)
+    {
+        var dir = (_selfTransform.position - from).normalized;
+        _rigidbody.velocity += (Vector2) dir * HurtSpeed;
+
+        _health--;
+        UpdateHud();
+
+        if (_health <= 0)
+        {
+            Kill();
+        }
+    }
+
+    private void Kill()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
