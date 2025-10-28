@@ -286,8 +286,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _groundCheckRadius: 0.1
-  _scoreText: {fileID: 0}
-  _healthText: {fileID: 0}
   _spikeLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -304,6 +302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 4796159436812141606}
+  _scoreText: {fileID: 0}
+  _healthText: {fileID: 0}
 --- !u!1 &7385232918434780272
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384725292722224883}
   - component: {fileID: 1814809032011271043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpriteBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

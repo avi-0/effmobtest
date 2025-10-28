@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3018068037915548821}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7809860052069813796}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: GroundCheckLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 935096296084668988}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.75, y: -0.6666667, z: 0}
+  m_LocalPosition: {x: -1, y: -0.6666667, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 6136136772761609904}
   - component: {fileID: 1878986693584555117}
   - component: {fileID: 2046764125899238822}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2831038290596011841}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: GroundCheckRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 3192699485327509739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.75, y: -0.6666667, z: 0}
+  m_LocalPosition: {x: 1, y: -0.6666667, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 6219145933832853320}
   - component: {fileID: 4796159436812141606}
   - component: {fileID: 8638151954862242712}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: EnemyWalker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,6 +239,7 @@ Transform:
   - {fileID: 2831038290596011841}
   - {fileID: 6084209613494873372}
   - {fileID: 5017301067324446210}
+  - {fileID: 8774180782024124366}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &6231054556345669233
@@ -376,6 +377,73 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _surroundingsCheckRadius: 0.1
+--- !u!1 &4285626409843631740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8774180782024124366}
+  - component: {fileID: 6218309451619251484}
+  m_Layer: 8
+  m_Name: Hurtbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8774180782024124366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4285626409843631740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4059307610969347023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6218309451619251484
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4285626409843631740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &4827334413722541537
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5017301067324446210}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: WallCheckRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6084209613494873372}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: WallCheckLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384725292722224883}
   - component: {fileID: 1814809032011271043}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpriteBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
